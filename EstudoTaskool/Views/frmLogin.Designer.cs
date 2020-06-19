@@ -36,6 +36,7 @@
             this.lblCaps = new System.Windows.Forms.Label();
             this.btnTeclado = new System.Windows.Forms.Button();
             this.chxManterConectado = new System.Windows.Forms.CheckBox();
+            this.btnPesronalizar = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnEntrar
@@ -101,6 +102,7 @@
             // 
             // lblCaps
             // 
+            this.lblCaps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCaps.AutoSize = true;
             this.lblCaps.ForeColor = System.Drawing.Color.Yellow;
             this.lblCaps.Location = new System.Drawing.Point(343, 121);
@@ -114,9 +116,9 @@
             // 
             this.btnTeclado.ForeColor = System.Drawing.Color.Black;
             this.btnTeclado.Location = new System.Drawing.Point(87, 118);
-            this.btnTeclado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTeclado.Margin = new System.Windows.Forms.Padding(2);
             this.btnTeclado.Name = "btnTeclado";
-            this.btnTeclado.Size = new System.Drawing.Size(96, 19);
+            this.btnTeclado.Size = new System.Drawing.Size(96, 21);
             this.btnTeclado.TabIndex = 13;
             this.btnTeclado.Text = "Teclado Virtual";
             this.btnTeclado.UseVisualStyleBackColor = true;
@@ -124,13 +126,26 @@
             // 
             // chxManterConectado
             // 
+            this.chxManterConectado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chxManterConectado.AutoSize = true;
-            this.chxManterConectado.Location = new System.Drawing.Point(346, 185);
+            this.chxManterConectado.Location = new System.Drawing.Point(344, 185);
             this.chxManterConectado.Name = "chxManterConectado";
             this.chxManterConectado.Size = new System.Drawing.Size(113, 17);
             this.chxManterConectado.TabIndex = 14;
             this.chxManterConectado.Text = "Manter conectado";
             this.chxManterConectado.UseVisualStyleBackColor = true;
+            // 
+            // btnPesronalizar
+            // 
+            this.btnPesronalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesronalizar.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnPesronalizar.Location = new System.Drawing.Point(103, 181);
+            this.btnPesronalizar.Name = "btnPesronalizar";
+            this.btnPesronalizar.Size = new System.Drawing.Size(80, 20);
+            this.btnPesronalizar.TabIndex = 15;
+            this.btnPesronalizar.Text = "Personalizar";
+            this.btnPesronalizar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnPesronalizar.Click += new System.EventHandler(this.btnPesronalizar_Click);
             // 
             // frmLogin
             // 
@@ -139,6 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(526, 301);
+            this.Controls.Add(this.btnPesronalizar);
             this.Controls.Add(this.chxManterConectado);
             this.Controls.Add(this.btnTeclado);
             this.Controls.Add(this.lblCaps);
@@ -148,7 +164,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCadastrar);
             this.ForeColor = System.Drawing.Color.White;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmLogin";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.frmLogin_Load);
@@ -167,6 +183,7 @@
         private System.Windows.Forms.Label lblCaps;
         private System.Windows.Forms.Button btnTeclado;
         private System.Windows.Forms.CheckBox chxManterConectado;
+        private System.Windows.Forms.Label btnPesronalizar;
     }
 }
 

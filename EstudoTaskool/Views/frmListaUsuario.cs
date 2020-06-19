@@ -22,8 +22,18 @@ namespace EstudoTaskool.Views
 
         private void frmListaUsuario_Load(object sender, EventArgs e)
         {
-            
+            this.BackColor = Utils.backColor;
+
+            foreach (Control item in this.Controls)
+            {
+                Label lbl = item as Label;
+
+                if (lbl != null)
+                    lbl.ForeColor = Utils.foreColor;
+            }
+
             carregaLista();
+
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -41,6 +51,7 @@ namespace EstudoTaskool.Views
             string userName = linha.Cells[3].Value.ToString();
             string senha = linha.Cells[4].Value.ToString();
             string telefone = linha.Cells[5].Value.ToString();
+            byte[] foto = linha.Cells[6].Value as byte[];
             int codigo = Convert.ToInt32(linha.Cells[0].Value.ToString());
 
             Usuario usuario = new Usuario
@@ -51,7 +62,7 @@ namespace EstudoTaskool.Views
                 Senha = senha,
                 Telefone = telefone,
                 Username = userName,
-
+                Foto = foto,
             };
 
             new frmCadastro(usuario).ShowDialog();

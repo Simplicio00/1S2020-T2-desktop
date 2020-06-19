@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,13 +10,15 @@ namespace EstudoTaskool
 {
     class Utils
     {
-        public  static string directoryPath
+        public static string directoryPath
         {
             get
             {
                 return @"C:\user_logs\";
             }
         }
+        public static Color backColor{ get; set; }
+        public static Color foreColor{ get; set; }
 
         public static bool temCamposVazio(Form form)
         {

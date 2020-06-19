@@ -9,28 +9,52 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.IO;
+using EstudoTaskool.Views;
 
 namespace EstudoTaskool
 {
     public partial class frmLogin : Form
     {
-        private string directoryPath = Utils.directoryPath;
+        string directoryPath = Utils.directoryPath;
+        private string logLoginFileName = "log_login.txt";
         private string fullFilePath;
+
         public frmLogin()
         {
             InitializeComponent();
 
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MinimumSize = this.Size;
-            this.Text = "Login | Taskool";
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Text = "Login | Taskool";
 
             //para bloquear o Ctrl C + Ctrl V
             tbxUsuario.ShortcutsEnabled = false;
 
-            fullFilePath = directoryPath + "log_login.txt";
+            fullFilePath = directoryPath + logLoginFileName;
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            if (File.Exists(fullFilePath))
+            {
+                using (StreamReader sr = new StreamReader(fullFilePath))
+                {
+                    string userName = sr.ReadToEnd();
+                    
+                    new FrmPrincipal().ShowDialog();
+                    this.Close();
+                }
+            }
+
+
+
+            //esconde a label
+            lblCaps.Visible = isCapsLockActive();
+
+
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -47,44 +71,24 @@ namespace EstudoTaskool
             }
             else
             {
+                MessageBox.Show("Bem Vindo", "Entrada");
+
                 if (chxManterConectado.Checked)
                 {
                     if (!Directory.Exists(directoryPath))
                     {
                         Directory.CreateDirectory(directoryPath);
                     }
-
                     using (StreamWriter sw = new StreamWriter(fullFilePath))
                     {
                         sw.Write(tbxUsuario.Text);
                         sw.Close();
-                    } 
+                    }
                 }
-                MessageBox.Show("Bem Vindo", "Entrada");
                 this.Hide();
                 new FrmPrincipal().ShowDialog();
                 this.Close();
             }
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            if (File.Exists(fullFilePath))
-            {
-                using(StreamReader sr = new StreamReader(fullFilePath))
-                {
-                    string username = sr.ReadToEnd();
-
-                    if (username.Trim().Length != 0)
-                    {
-                        new FrmPrincipal().ShowDialog();
-                        this.Close(); 
-                    }
-                }
-            }
-
-            //esconde a label
-            lblCaps.Visible = isCapsLockActive();
         }
 
         private void tbxUsuario_Enter(object sender, EventArgs e)
@@ -113,6 +117,19 @@ namespace EstudoTaskool
             System.Diagnostics.Process.Start("osk.exe");
             tbxUsuario.Focus();
         }
-    }
 
+        private void btnPesronalizar_Click(object sender, EventArgs e)
+        {
+            new frmPersonalizar().ShowDialog();
+            this.BackColor = Utils.backColor;
+
+            foreach (Control item in this.Controls)
+            {
+                Label lbl = item as Label;
+
+                if (lbl != null)
+                    lbl.ForeColor = Utils.foreColor;
+            }
+        }
+    }
 }

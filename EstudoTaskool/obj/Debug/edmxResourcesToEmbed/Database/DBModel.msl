@@ -4,10 +4,10 @@
     <EntitySetMapping Name="Usuario">
       <EntityTypeMapping TypeName="TaskoolModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Codigo" ColumnName="Codigo" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Senha" ColumnName="Senha" />
           <ScalarProperty Name="Telefone" ColumnName="Telefone" />
           <ScalarProperty Name="Foto" ColumnName="Foto" />
